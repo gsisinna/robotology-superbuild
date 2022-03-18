@@ -22,6 +22,7 @@ Table of Contents
     * [MATLAB](#matlab)
     * [Octave](#octave)
     * [Python](#python)
+    * [ACE](#ace)
     * [Oculus](#oculus)
     * [Cyberith](#cyberith)
     * [Xsens](#xsens)
@@ -66,6 +67,7 @@ The dependencies CMake options specify if the packages dependending on something
 | `ROBOTOLOGY_USES_MATLAB`  | Include software and plugins that depend on the [Matlab](https://mathworks.com/products/matlab.html). | `OFF` | [Documentation on MATLAB dependency.](#matlab) |
 | `ROBOTOLOGY_USES_OCTAVE`  | Include software and plugins that depend on [Octave](https://www.gnu.org/software/octave/).  | `OFF` |  [Documentation on Octave dependency.](#octave) |
 | `ROBOTOLOGY_USES_PYTHON`  | Include software that depends on [Python](https://www.python.org/).  | `OFF` |  [Documentation on Python dependency.](#python) |
+| `ROBOTOLOGY_USES_ACE`  | Include software that depends on [ACE](https://www.python.org/) library.  | `ON` on all platforms except for macOS on Apple Silicon (i.e. arm64) where it is `OFF`. |  [Documentation on ACE dependency.](#ace) |
 | `ROBOTOLOGY_USES_OCULUS_SDK`  | Include software and plugins that depend on [Oculus](https://www.oculus.com/).  | `OFF` |  [Documentation on Oculus dependency.](#oculus) |
 | `ROBOTOLOGY_USES_CYBERITH_SDK`  | Include software and plugins that depend on [Cyberith](https://www.cyberith.com/).  | `OFF` |  [Documentation on Cyberith dependency.](#cyberith) |
 | `ROBOTOLOGY_USES_CFW2CAN`  | Include software and plugins that depend on [CFW2 CAN custom board](http://wiki.icub.org/wiki/CFW_card).  | `OFF` | No specific documentation is available for this  option, as it is just used with the [iCub Head profile](#icub-head), in which the related documentation can be found.  |
@@ -92,6 +94,8 @@ Not all options are supported on all platforms. The following table provides a r
 | `ROBOTOLOGY_USES_MATLAB` |  ✔️           |        ✔️                     |             ❌                |                 ✔️              |              ✔️                |                 ✔️              |
 | `ROBOTOLOGY_USES_OCTAVE` |  ✔️           |        ✔️                     |              ❌                |                  ❌              |               ❌                |                  ❌              |
 | `ROBOTOLOGY_USES_PYTHON`<sup id="a3">[3!](#f3)</sup> |  ✔️           |         ❌                     |              ❌                |                  ✔️              |               ✔️               |                  ✔️              |
+| `ROBOTOLOGY_USES_PYTHON`<sup id="a4">[4!](#f3)</sup> |  ✔️           |         ✔️                     |              ✔️                |                  ✔️              |               ✔️               |                  ✔️              |
+
 | `ROBOTOLOGY_USES_OCULUS_SDK` |   ❌          |         ❌                     |             ✔️                |                  ❌              |               ❌                |                  ❌            |
 | `ROBOTOLOGY_USES_CYBERITH_SDK` |   ❌           |         ❌                     |            ✔️                  |                  ❌              |               ❌                |                 ✔️              |
 | `ROBOTOLOGY_USES_CFW2CAN` |  ✔️           |        ❌                      |             ❌                 |                 ✔️              |              ❌                 |                 ❌               |
@@ -103,6 +107,9 @@ Not all options are supported on all platforms. The following table provides a r
 <b id="f2">2!</b>:Since 2021.11, `ROBOTOLOGY_ENABLE_ROBOT_TESTING` does not support building with apt dependencies on Ubuntu 18.04 .
 
 <b id="f3">3!</b>:Since 2021.11, `ROBOTOLOGY_USES_PYTHON` does not support building with apt dependencies on Ubuntu 18.04 .
+
+<b id="f4">4!</b>:`ROBOTOLOGY_USES_ACE` does not support building on macOS on Apple Silicon (i.e. arm64).
+
 
 Profile-specific documentation
 ===================================
@@ -386,6 +393,11 @@ conda install -c conda-forge python numpy swig pybind11
 
 ### Check the installation
 Open a python interpreter and try to import modules, for example verify that `import yarp` works.
+
+## ACE
+
+Support for this dependency is enabled by the `ROBOTOLOGY_USES_ACE` CMake option, that is always automatically enable except for macOS on Apple Silicon (i.e. arm64). 
+
 
 ## Oculus
 Support for this dependency is enabled by the `ROBOTOLOGY_USES_OCULUS_SDK` CMake option.
