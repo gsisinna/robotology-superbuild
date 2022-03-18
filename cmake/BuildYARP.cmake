@@ -44,6 +44,12 @@ else()
   set(YARP_USE_I2C OFF)
 endif()
 
+if(ROBOTOLOGY_USES_ACE)
+  set(SKIP_ACE OFF)
+else()
+  set(SKIP_ACE ON)
+endif()
+
 # For what regards Python installation, the options changes depending
 # on whether we are installing YARP from source, or generating a
 # conda package on Windows as in that case the installation location
@@ -112,6 +118,7 @@ ycm_ep_helper(YARP TYPE GIT
                               -DCREATE_LUA:BOOL=${ROBOTOLOGY_USES_LUA}
                               -DENABLE_yarpmod_usbCamera:BOOL=${ENABLE_USBCAMERA}
                               -DENABLE_yarpmod_usbCameraRaw:BOOL=${ENABLE_USBCAMERA}
+                              -DSKIP_ACE:BOOL=${SKIP_ACE}
                               ${YARP_OPTIONAL_CMAKE_ARGS})
 
 set(YARP_CONDA_DEPENDENCIES ace libopencv tinyxml qt eigen sdl sdl2 sqlite libjpeg-turbo)
