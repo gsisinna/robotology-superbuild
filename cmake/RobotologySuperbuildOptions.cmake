@@ -16,6 +16,10 @@ option(ROBOTOLOGY_USES_OCTAVE "Enable compilation of software that depend on Oct
 option(ROBOTOLOGY_USES_LUA "Enable compilation of software that depend on Lua" FALSE)
 mark_as_advanced(ROBOTOLOGY_USES_LUA)
 option(ROBOTOLOGY_USES_PYTHON "Enable compilation of software that depend on Python" FALSE)
+# TODO: set to OFF on macOS on arm64 Apple Silicon
+set(ROBOTOLOGY_USES_ACE_DEFAULT ON)
+option(ROBOTOLOGY_USES_ACE "Enable compilation of software that depend on ACE" ${ROBOTOLOGY_USES_ACE_DEFAULT})
+mark_as_advanced(ROBOTOLOGY_USES_ACE)
 
 ## Enable packages that depend on the Gazebo Classic simulator
 if(WIN32)
