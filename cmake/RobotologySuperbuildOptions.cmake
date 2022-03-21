@@ -16,8 +16,13 @@ option(ROBOTOLOGY_USES_OCTAVE "Enable compilation of software that depend on Oct
 option(ROBOTOLOGY_USES_LUA "Enable compilation of software that depend on Lua" FALSE)
 mark_as_advanced(ROBOTOLOGY_USES_LUA)
 option(ROBOTOLOGY_USES_PYTHON "Enable compilation of software that depend on Python" FALSE)
-# TODO: set to OFF on macOS on arm64 Apple Silicon
-set(ROBOTOLOGY_USES_ACE_DEFAULT ON)
+# macOS on arm64 Apple Silicon does not support ACE by default, see
+# https://github.com/robotology/robotology-superbuild/issues/916s
+if(APPLE AND "${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "arm64")
+  set(ROBOTOLOGY_USES_ACE_DEFAULT OFF)
+else()
+  set(ROBOTOLOGY_USES_ACE_DEFAULT ON)
+endif()
 option(ROBOTOLOGY_USES_ACE "Enable compilation of software that depend on ACE" ${ROBOTOLOGY_USES_ACE_DEFAULT})
 mark_as_advanced(ROBOTOLOGY_USES_ACE)
 
