@@ -7,9 +7,9 @@ include(YCMEPHelper)
 find_or_build_package(YARP QUIET)
 find_or_build_package(matioCpp QUIET)
 
-ycm_ep_helper(YARP_telemetry TYPE GIT
+ycm_ep_helper(robometry TYPE GIT
               STYLE GITHUB
-              REPOSITORY robotology/yarp-telemetry.git
+              REPOSITORY robotology/robometry.git
               TAG master
               COMPONENT dynamics
               FOLDER src
@@ -17,4 +17,4 @@ ycm_ep_helper(YARP_telemetry TYPE GIT
                       YARP
                       matioCpp)
 
-set(YARP_telemetry_CONDA_DEPENDENCIES boost-cpp libmatio)
+set(robometry_CONDA_DEPENDENCIES boost-cpp libmatio)
